@@ -15,7 +15,6 @@ names_13 = EveryPolitician::Wikidata.wikipedia_xpath(
 ).reject { |n| n.end_with? 'Constituency' }
 
 names = (names_11 + names_13).uniq
-binding.pry
 
 EveryPolitician::Wikidata.scrape_wikidata(names: { en: names })
 warn EveryPolitician::Wikidata.notify_rebuilder
