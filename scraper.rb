@@ -21,4 +21,7 @@ names_13 = EveryPolitician::Wikidata.wikipedia_xpath(
 
 names = (names_11 + names_12 + names_13).uniq
 
-EveryPolitician::Wikidata.scrape_wikidata(names: { en: names })
+query = 'SELECT DISTINCT ?item { ?item wdt:P39 wd:Q21294917 . }'
+ids = EveryPolitician::Wikidata.sparql(query)
+
+EveryPolitician::Wikidata.scrape_wikidata(ids: ids, names: { en: names })
